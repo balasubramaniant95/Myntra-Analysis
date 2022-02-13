@@ -26,9 +26,8 @@ def write_to_csv(today):
             processing_dir.mkdir(parents=True)
             logger.debug(f"{str(processing_dir)} did not exist. created required folder(s)")
 
-        while not q.empty():
+        while q.empty():
             time.sleep(1)
-            continue
 
         with processing_dir.joinpath(f"{today}.csv").open("w", newline="") as file:
             writer = csv.writer(file, delimiter="|")
